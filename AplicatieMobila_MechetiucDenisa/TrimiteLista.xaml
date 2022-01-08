@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AplicatieMobila_MechetiucDenisa.TrimiteLista">
+    <ContentPage.Content>
+        <Grid>
+            <StackLayout Padding="45" BackgroundColor="WhiteSmoke">
+                <Image Source="https://www.playtimeballoons.co.uk/wp-content/uploads/2020/04/509-5099390_check-green-check-list-icon-hd-png-download.png"></Image> 
+                <Label Text="Lista dvs. a fost trimisa agentiei!" TextColor="ForestGreen" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" FontSize="22" />
+            </StackLayout>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

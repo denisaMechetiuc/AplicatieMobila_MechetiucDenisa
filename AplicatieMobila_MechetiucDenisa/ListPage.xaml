@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AplicatieMobila_MechetiucDenisa.ListPage">
+    <ContentPage.Content xmlns:local="clr-namespace:AplicatieMobila_MechetiucDenisa">
+        <StackLayout Margin="20">
+            <Editor Placeholder="Adauga descrierea listei de cerinte: (ex: Apartament 1)" Text="{Binding Descriere}" HeightRequest="100" FontSize="19">
+                <Editor.Behaviors>
+                     <!-- daca un client nu are descrierea introdusa pt. o lista de cerinte, backgroundul controlului Editor se va colora in rosu -->
+                    <local:ValidationBehaviour />
+                </Editor.Behaviors>
+            </Editor>                      <!-- la click pe buton, se deschide pagina ApartamentePage si se pot aduaga cerinte pt. un apartament -->
+            <Button Text="Adauga cerinte pt. apartament" Clicked="OnChooseButtonClicked"  BackgroundColor="#11DDFF" FontSize="19" TextColor="Black" CornerRadius="12"/>  <!-- la click pe buton, se deschide pagina ApartamentePage si se pot adauga cerinte pt. un apartament -->
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Button Text="Save" Clicked="OnSaveButtonClicked" BackgroundColor="LightGreen" TextColor="Black" FontSize="19"  CornerRadius="12" />  <!-- se salveaza lista de cerinte -->
+                <Button Grid.Column="1" Text="Delete" Clicked="OnDeleteButtonClicked" BackgroundColor="Red" TextColor="White" FontSize="19" CornerRadius="12" />  <!-- se sterge lista de cerinte -->
+                <ListView Grid.Row="1" Grid.ColumnSpan="2" x:Name="listView" Margin="20">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <TextCell Text="{Binding Cartier}" TextColor="ForestGreen" Detail="{Binding Descriere}" DetailColor="Black" />  <!-- in listView, se afiseaza cerintele deja adaugate in lista respectiva -->
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

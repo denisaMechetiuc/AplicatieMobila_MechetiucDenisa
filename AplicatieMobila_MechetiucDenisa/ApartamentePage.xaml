@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AplicatieMobila_MechetiucDenisa.ApartamentePage">
+    <ContentPage.Content xmlns:local="clr-namespace:AplicatieMobila_MechetiucDenisa">
+        <StackLayout Margin="20">
+            <Editor Placeholder="Cartier:" Margin="15" Text="{Binding Cartier}" HeightRequest="40"  FontSize="19">  <!-- clientul va introduce cartierul in care va dori sa fie situat apartamentul dorit -->
+            <Editor.Behaviors>
+                <local:ValidationBehaviour />    <!-- daca un client nu a introdus cerintele pt. apartament, backgroundul controlului Editor se va colora in rosu -->
+            </Editor.Behaviors>
+            </Editor>
+            <Editor Placeholder="Pret, Camere, Descriere:" Margin="15" Text="{Binding Descriere}" HeightRequest="50"  FontSize="19"> <!-- clientul va introduce pretul maxim, nr. de camere si descrierea apartamentului dorit -->
+            <Editor.Behaviors>
+                <local:ValidationBehaviour />
+            </Editor.Behaviors>
+            </Editor>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Button Text="Save" Clicked="OnSaveButtonClicked" BackgroundColor="LightGreen" TextColor="Black" FontSize="19"  CornerRadius="12" />  <!-- la click pe butonul Save, se vor salva cerintele in lista predefinita -->
+                <Button Grid.Column="1" Text="Delete" Clicked="OnDeleteButtonClicked" BackgroundColor="Red" TextColor="White" FontSize="19" CornerRadius="12"/> <!-- la click pe butonul Delete, se vor sterge cerintele -->
+                <ListView Grid.Row="1" x:Name="listView" Margin="20" ItemSelected="OnListViewItemSelected"> <!-- la click pe cerintele predefinite din lista -->
+                    <ListView.ItemTemplate>   <!-- cerintele predefinite anterior vor fi adaugate in lista de cerinte a clientului -->
+                        <DataTemplate>
+                            <TextCell Text="{Binding Cartier}" TextColor="ForestGreen" Detail="{Binding Descriere}" DetailColor="Black" />  <!-- utilizand Binding, se vor prelua datele introduse de catre client (cartier, pret, nr. camere si descriere) -->
+                        </DataTemplate>   <!-- nu se poate face Binding la fiecare cerinta in mod separat (TextCell permite maxim 2 Bindings), de aceea, am combinat pret, nr. camere si descriere intr-o singura coloana, numita descriere  -->
+                    </ListView.ItemTemplate>
+                </ListView>
+            </Grid>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

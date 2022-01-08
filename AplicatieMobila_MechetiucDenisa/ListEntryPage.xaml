@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AplicatieMobila_MechetiucDenisa.ListEntryPage">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Adauga lista de cerinte pt. un apartament" Clicked="OnCerinteListaAddedClicked"/>  <!-- se adauga o lista de cerinte -->
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <StackLayout Margin="20">
+            <ListView x:Name="listView" Margin="20" ItemSelected="OnListViewItemSelected" SeparatorColor="Black" RowHeight="60"> <!-- la click pe fiecare element din lista se deschide pagina ListPage -->
+                <ListView.ItemTemplate>
+                    <DataTemplate>  <!-- in listView se afiseaza toate listele , descrierea fiecaruia  si data in care a fost creata -->
+                        <TextCell Text="{Binding Descriere}" Detail="{Binding Data}" TextColor="Green" DetailColor="Black" />
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <Button Text="Trimite lista de cerinte agentiei" Clicked="OnSendButtonClicked" BackgroundColor="#78FF9B"  TextColor="Black" FontSize="16" CornerRadius="12" /> <!-- la click pe buton se deschide pagina TrimiteLista -->
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
